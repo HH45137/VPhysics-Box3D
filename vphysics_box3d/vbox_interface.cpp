@@ -26,12 +26,12 @@ EXPOSE_SINGLE_INTERFACE_GLOBALVAR(
 //-------------------------------------------------------------------------------------------------
 
 // Route all of Box3D's allocations through Valve's allocator, matching new/delete.
-static void* Box3D_Allocate(int32 size, int32 alignment)
+static void* Box3D_Allocate(size_t size, int32 alignment)
 {
     return MemAlloc_AllocAligned(size, alignment);
 }
 
-static void Box3D_Free(void* block)
+static void Box3D_Free(void* block, size_t size)
 {
     MemAlloc_FreeAligned(block);
 }

@@ -63,67 +63,7 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
-set(_box3d_root "${CMAKE_CURRENT_SOURCE_DIR}/box3d")
-set(_box3d_sources
-    aabb.c
-    arena_allocator.c
-    bitset.c
-    block_allocator.c
-    body.c
-    broad_phase.c
-    capsule.c
-    compound.c
-    constraint_graph.c
-    contact.c
-    contact_solver.c
-    convex_manifold.c
-    core.c
-    distance.c
-    distance_joint.c
-    dynamic_tree.c
-    height_field.c
-    hull.c
-    id_pool.c
-    island.c
-    joint.c
-    manifold.c
-    math_functions.c
-    mesh.c
-    mesh_contact.c
-    motor_joint.c
-    mover.c
-    name_cache.c
-    parallel_for.c
-    parallel_joint.c
-    physics_world.c
-    prismatic_joint.c
-    recording.c
-    recording_replay.c
-    revolute_joint.c
-    scheduler.c
-    sensor.c
-    shape.c
-    simd.c
-    solver.c
-    solver_set.c
-    sphere.c
-    spherical_joint.c
-    table.c
-    timer.c
-    triangle_manifold.c
-    types.c
-    weld_joint.c
-    wheel_joint.c
-    world_snapshot.c
-)
-list(TRANSFORM _box3d_sources PREPEND "${_box3d_root}/src/")
-
-add_library(box3d STATIC ${_box3d_sources})
-
-target_include_directories(box3d
-    PUBLIC  "${_box3d_root}/include"
-    PRIVATE "${_box3d_root}/src"
-)
+add_subdirectory(box3d)
 
 set_target_properties(box3d PROPERTIES
     C_STANDARD 17
